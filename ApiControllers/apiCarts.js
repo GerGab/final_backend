@@ -1,7 +1,5 @@
 // importar librerias, paquetes y modulos
-import fileContainer from "../Databases/fileContainer.js";
-import {productContainer} from './apiProducts.js'
-const cartContainer = new fileContainer('./Databases/carts.txt')
+import { productDao, cartDao } from "../DAOs/daoIndex.js"
 
 const apiCarts = {
     // crear carrito
@@ -9,7 +7,7 @@ const apiCarts = {
         const data = req.body
         data.products = []
         try{
-            const cart = await cartContainer.create(data)
+            const cart = await cartDao.create(data)
             res.status(201).json({cart_id:cart.id})
         }catch(err){
             res.status(500).json({error: err.message})
@@ -22,10 +20,10 @@ const apiCarts = {
         const product_id = req.body.id
         try{
             
-            const cart = await cartContainer.getById(cart_id) // recupero el carro por su id
-            const product = await productContainer.getById(product_id)// importada la instancia del product container recupero el producto (si es que existe, esto además sirve de verificación)
+            const cart = await cartDao.getById(cart_id) // recupero el carro por su id
+            const product = await productDao.getById(product_id)// importada la instancia del product container recupero el producto (si es que existe, esto además sirve de verificación)
             cart.products.push(product) 
-            await cartContainer.modById(cart_id,cart) // modifico el carro por su id.
+            await cartDao.modById(cart_id,cart) // modifico el carro por su id.
             res.sendStatus(200)
         }catch(err){
             err.type === "db not found"?
@@ -38,7 +36,7 @@ const apiCarts = {
     getCart: async (req,res) =>{
         const cart_id = req.params.cart_id
         try{
-            const cart = await cartContainer.getById(cart_id)
+            const cart = await cartDao.getById(cart_id)
             res.status(200).json(cart)
         }catch(err){
             err.type === "db not found"?
@@ -51,12 +49,12 @@ const apiCarts = {
     delProduct: async (req,res) =>{
         const cart_id = req.params.cart_id
         const product_id = req.params.product_id
-        console.log(cart_id,product_id)
         try{
-            const cart = await cartContainer.getById(cart_id) // recupero el carro por su id
-            const products = cart.products.filter(prods => prods.id!==product_id)
+            const cart = await cartDao.getById(cart_id)
+            console.log(cart) // recupero el carro por su id
+            const products = cart.products.filter(prods => prods._id.toString()!==product_id)
             cart.products = products
-            await cartContainer.modById(cart_id,cart) // modifico el carro por su id.
+            await cartDao.modById(cart_id,cart) // modifico el carro por su id.
             res.sendStatus(200)
         }catch(err){
             err.type === "db not found"?
@@ -66,11 +64,12 @@ const apiCarts = {
         }
 
     },
-    // eliminar el carrito
+    // CORREGIR HAY QUE VACIAR EL CARRO NO ELIMINARLO
     delCart: async (req,res)=>{
         const cart_id = req.params.cart_id
-        try{
-            await cartContainer.deleteById(cart_id)
+        try{//_id:cart_id, revisar para implementar en las bases no remotas
+            let cart = {products:[]}
+            await cartDao.modById(cart_id,cart)
             res.sendStatus(204)
         }catch(err){
             err.type === "db not found"?

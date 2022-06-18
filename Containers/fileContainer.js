@@ -1,12 +1,12 @@
-// importación de paquetes, modulos y librerias
 import fs from 'fs'
+import { addId, completeId } from './containerHelpers/AssignId.js';
 
 // clase general capaz de configurarse por constructor para distintos textos planos
 
 class fileContainer {
 
-    constructor(file){
-        this.file = file;
+    constructor(path,file){
+        this.file = path.concat("/",file);
         // retirar a funcion helper
         //this.keys = keys;
     }
@@ -14,14 +14,7 @@ class fileContainer {
     // función save para guardar un producto por medio de Post
     async create(object){
         let objects = await this.readFromFile();
-        try{
-            //this.validate(object,objects)
-            true
-        }catch(err){
-            const error = new Error( err.message)
-            error.type = "error de validacion"
-            throw error
-        }
+        object = addId(object)
         objects.push(object);
         await this.writeInFile(objects)
         return object
@@ -30,7 +23,7 @@ class fileContainer {
     // funcion para obtener por metodo Get/:id
     async getById(id){
         let objects = await this.readFromFile()
-        let object = objects.find(object => object.id === id)
+        let object = objects.find(object => object._id === id)
         if (!object){
             const error = new Error(`no existe un registro con id: ${id}`)
             error.type = "db not found"
@@ -48,7 +41,7 @@ class fileContainer {
     // función para borar un objeto por DELETE/:id
     async deleteById(id){
         const objects =  await this.readFromFile()
-        const filterObjects = objects.filter(item => item.id !== id);
+        const filterObjects = objects.filter(item => item._id !== id);
         if(filterObjects.length == objects.length){
             const error = new Error(`No se pudo borrar el producto. No existe un producto con id: ${id}`)
             error.type = "db not found"
@@ -60,16 +53,9 @@ class fileContainer {
 
     // funcion para modificar un objeto ya creado PUT/:id
     async modById(id,object){
-        try{
-            //this.validate(object)
-            true
-        }catch(err){
-            const error = new Error( err.message)
-            error.type = "error de validacion"
-            throw error
-        }
+        object = completeId(id,object)
         const objects = await this.readFromFile();
-        const index = objects.findIndex(item => item.id === id);
+        const index = objects.findIndex(item => item._id === id);
         console.log(index)
         if(index<0){
             const error = new Error(`no existe un producto con id: ${id}`)

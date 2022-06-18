@@ -1,26 +1,23 @@
 [
   {
-    "title": "Escuadra",
+    "id": "4001",
+    "title": "Lonchera",
     "price": 123.45,
     "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
-    "id": "1"
+    "_id": "1655574761004"
   },
   {
-    "title": "Globo Terráqueo",
-    "price": 345.67,
-    "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/globe-earth-geograhy-planet-school-256.png",
-    "id": "3"
-  },
-  {
-    "title": "Lapicera",
-    "price": 350.2,
+    "id": "4004",
+    "title": "cartuchera",
+    "price": 525.3,
     "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
-    "id": "1651397263414"
+    "_id": "1655574782312"
   },
   {
-    "title": "Atornilladora",
-    "price": 123.45,
+    "id": "3014",
+    "title": "regla",
+    "price": 210.4,
     "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
-    "id": "1653376856389"
+    "_id": "1655574788605"
   }
 ]

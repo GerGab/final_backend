@@ -1,8 +1,7 @@
 // importación de paquetes, modulos y librerias
 import express from "express";
 import { Router } from "express";
-import { addId } from "../MiddleWares/AssignId.js";
-import apiCarts from "../ApiControllers/apiCarts.js";
+import apiCarts from '../ApiControllers/apiCarts.js'
 
 // creacion de instancias
 const routerApiCarts = new Router()
@@ -13,7 +12,7 @@ routerApiCarts.use(express.urlencoded({extended:true}))
 // middlewares propios
 
 // ruteo ApiProducts
-routerApiCarts.post("/",addId,apiCarts.createCart)
+routerApiCarts.post("/",apiCarts.createCart)
 routerApiCarts.post("/:cart_id/productos",apiCarts.addProduct)
 routerApiCarts.get("/:cart_id",apiCarts.getCart)
 routerApiCarts.delete("/:cart_id/productos/:product_id",apiCarts.delProduct)

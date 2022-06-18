@@ -1,19 +1,21 @@
 // importar librerias, modulos y paquetes
-import fileContainer from '../Databases/fileContainer.js'
-
-// instanciar componentes
-export const productContainer = new fileContainer('./Databases/products.txt')
+import {productDao}  from "../DAOs/daoIndex.js"
 
 const apiProducts = {
     // solicitar todos los productos
     getProducts: async (req, res) => {
-        res.json( await productContainer.getAll())
+        try{
+            res.json( await productDao.getAll())
+        }
+        catch(err){
+            console.log(`error:${err.message}`)
+        }
     },
     // solicitar producto unico por id
     getProductId: async (req,res) => {
         const id = req.params.id
         try{
-            res.json( await productContainer.getById(id))
+            res.json( await productDao.getById(id))
         }catch(err){
             err.type === "db not found" ?
                 res.status(404).json({error: err.message})
@@ -25,7 +27,7 @@ const apiProducts = {
     postProduct: async (req,res) =>{
         const data = req.body
         try{
-            const addedProduct =  await productContainer.create(data)
+            const addedProduct =  await productDao.create(data)
             res.status(201).json( addedProduct)
         }catch(err){
             err.type === "error de validacion" ?
@@ -40,7 +42,7 @@ const apiProducts = {
         const id = req.params.id
         
         try{
-            const modProduct =  await productContainer.modById(id,data)
+            const modProduct =  await productDao.modById(id,data)
             res.status(200).json(modProduct)
         }catch(err){
             if (err.type === "error de validacion") {
@@ -55,7 +57,7 @@ const apiProducts = {
     delProduct: async (req,res) =>{
         const id = req.params.id
         try{
-            await productContainer.deleteById(id)
+            await productDao.deleteById(id)
             res.sendStatus(200)
         }catch(err){
             err.type === "db not found" ?
