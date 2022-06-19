@@ -22,3 +22,5 @@ const server = app.listen(PORT, () =>{
 
 // avisos y alertas
 server.on("error", error => console.log(`Error en servidor ${error}`))
+
+export default app

@@ -50,8 +50,7 @@ const apiCarts = {
         const cart_id = req.params.cart_id
         const product_id = req.params.product_id
         try{
-            const cart = await cartDao.getById(cart_id)
-            console.log(cart) // recupero el carro por su id
+            const cart = await cartDao.getById(cart_id)// recupero el carro por su id
             const products = cart.products.filter(prods => prods._id.toString()!==product_id)
             cart.products = products
             await cartDao.modById(cart_id,cart) // modifico el carro por su id.
@@ -75,6 +74,14 @@ const apiCarts = {
             err.type === "db not found"?
             res.status(404).json({error:err.message})
             :
+            res.status(500).json({error:err.message})
+        }
+    },
+    reset: async(req,res)=>{
+        try{
+            await cartDao.deleteAll()
+            res.sendStatus(200)
+        }catch(err){
             res.status(500).json({error:err.message})
         }
     }

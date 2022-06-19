@@ -13,5 +13,5 @@ export default {
     firebase: {
         json: './databases/ecommerce-8cc03-firebase-adminsdk-nfaqb-2ef68b3318.json'
     },
-    DATABASE_TYPE: 'json'
+    DATABASE_TYPE: 'mongodb'
 }

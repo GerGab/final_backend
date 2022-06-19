@@ -1,23 +1,9 @@
 [
   {
-    "id": "4001",
-    "title": "Lonchera",
-    "price": 123.45,
-    "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
-    "_id": "1655574761004"
-  },
-  {
-    "id": "4004",
-    "title": "cartuchera",
-    "price": 525.3,
-    "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
-    "_id": "1655574782312"
-  },
-  {
-    "id": "3014",
-    "title": "regla",
-    "price": 210.4,
-    "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
-    "_id": "1655574788605"
+    "title": "martillo",
+    "price": 1332.2,
+    "thumbnail": "http...",
+    "id": "4321",
+    "_id": "1655633911868"
   }
 ]

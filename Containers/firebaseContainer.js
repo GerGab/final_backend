@@ -1,8 +1,9 @@
-
+import admin from "firebase-admin"
 class firebaseContainer {
 
     constructor(database,collection){
         this.collection = database.collection(collection);
+        this.table = collection
     }
 
     // función save para guardar un producto por medio de Post
@@ -51,11 +52,21 @@ class firebaseContainer {
 
     // función no utilizada por el momento
     async deleteAll(){
-        this.collection.onSnapshot((snapshot) => {
-            snapshot.docs.forEach((doc) => {
-                ref.doc(doc.id).delete()
+        try{
+            const ids = []
+            const snapshot = await this.collection.get();
+            snapshot.forEach(doc => {
+            ids.push(doc.id)
             })
-        })
+            const promises = ids.map(id => this.collection.doc(id).delete())
+            const resultados = await Promise.allSettled(promises)
+            const errores = resultados.filter(r => r.status == 'rejected')
+            if (errores.length > 0) {
+                throw new Error('no se borró todo. volver a intentarlo')
+            }
+        }catch(err){
+        console.log(err)
+        }
     }
 
     // función para callback manejo del archivo de texto plano

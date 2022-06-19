@@ -16,6 +16,7 @@ routerApiProducts.get("/:id",apiProducts.getProductId)
 // ruteo de api autenticadas
 routerApiProducts.post("/",apiProducts.postProduct)
 routerApiProducts.put("/:id",apiProducts.putProduct)
+routerApiProducts.delete("/reset",apiProducts.reset)
 routerApiProducts.delete("/:id",apiProducts.delProduct)
 
 export default routerApiProducts

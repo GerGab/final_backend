@@ -15,7 +15,9 @@ routerApiCarts.use(express.urlencoded({extended:true}))
 routerApiCarts.post("/",apiCarts.createCart)
 routerApiCarts.post("/:cart_id/productos",apiCarts.addProduct)
 routerApiCarts.get("/:cart_id",apiCarts.getCart)
+routerApiCarts.delete("/reset",apiCarts.reset)
 routerApiCarts.delete("/:cart_id/productos/:product_id",apiCarts.delProduct)
 routerApiCarts.delete("/:cart_id",apiCarts.delCart)
+
 
 export default routerApiCarts

@@ -65,6 +65,15 @@ const apiProducts = {
                 :
                 res.status(500).json({error: err.message})
         }
+    },
+
+    reset: async(req,res)=>{
+        try{
+            await productDao.deleteAll()
+            res.sendStatus(200)
+        }catch(err){
+            res.status(500).json({error: err.message})
+        }
     }
 }
 

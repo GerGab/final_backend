@@ -17,7 +17,7 @@ class fileContainer {
         object = addId(object)
         objects.push(object);
         await this.writeInFile(objects)
-        return object
+        return {id:object._id}
     }
 
     // funcion para obtener por metodo Get/:id
@@ -56,7 +56,6 @@ class fileContainer {
         object = completeId(id,object)
         const objects = await this.readFromFile();
         const index = objects.findIndex(item => item._id === id);
-        console.log(index)
         if(index<0){
             const error = new Error(`no existe un producto con id: ${id}`)
             error.type = "db not found"

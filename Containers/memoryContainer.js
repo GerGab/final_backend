@@ -1,4 +1,4 @@
-import { addId } from "./containerHelpers/AssignId.js";
+import { addId, completeId } from "./containerHelpers/AssignId.js";
 
 class memoryContainer {
 
@@ -48,9 +48,8 @@ class memoryContainer {
         object = completeId(id,object)
         const objects = this.items
         const index = objects.findIndex(item => item._id === id);
-        console.log(index)
         if(index<0){
-            const error = new Error(`no existe un producto con id: ${id}`)
+            const error = new Error(`no existe un registro a modificar con id: ${id}`)
             error.type = "db not found"
             throw error
         }else{
