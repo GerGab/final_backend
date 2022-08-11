@@ -16,7 +16,7 @@ export const formatNewOrder = {
     wsp : (purchaseOrder)=>{
         return {
             number: `whatsapp:${config.smsAdmin}`,
-            text: `Se ha generador una nueva orden de compra con id : ${purchaseOrder.id}`
+            text: `Tu pedido ${purchaseOrder.id} de Ecommerce se envió y debería ser entregado el ${new Date(Date.now()).toLocaleString()}. Detalles: ${purchaseOrder.id}`
         }
     },
 
