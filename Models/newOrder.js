@@ -16,7 +16,7 @@ export const formatNewOrder = {
     wsp : (purchaseOrder)=>{
         return {
             number: `whatsapp:${config.smsAdmin}`,
-            text: `Tu pedido ${purchaseOrder.id} de Ecommerce se envió y debería ser entregado el ${new Date(Date.now()).toLocaleString()}. Detalles: ${purchaseOrder.id}`
+            text: `Your Ecommerce  order  ${purchase.id} has shipped and should be delivered on July 10, 2019. Details: http://www.falseecommerce.com/`
         }
     },
 
