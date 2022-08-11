@@ -1,4 +1,5 @@
 import {ObjectId} from 'bson'
+import {customError, standardErrors} from '../Models/errors.js';
 
 class mongoContainer {
 
@@ -6,88 +7,77 @@ class mongoContainer {
         this.client = client
         this.database = database
         this.collection = collection;
+        this.connectCollection()
+        .then(connection => 
+            {this.connection = connection})      
     }
 
     // función save para guardar un producto por medio de Post
     async create(object){
-        let collection = await this.connectCollection();
-        const {insertedId} = await collection.insertOne(object)
-        await this.closeCollection()
-        return {id:insertedId.toString()}
+        try {
+            const {insertedId} = await this.connection.insertOne(object)
+            return {id:insertedId.toString()}
+        } catch (error) {
+            customError(error.message,standardErrors.DB_NOT_RESPOND)
+        }
     }
 
     // funcion para obtener por metodo Get/:id
     async getById(id){
         let trueId
-        try{trueId = ObjectId(id)}
-        catch{
-            const error = new Error(`Formato de identificador no admitido`)
-            error.type = "db not found"
-            throw error
+        try{trueId = ObjectId(id)}catch{customError(`Formato de identificador no admitido`,standardErrors.BAD_REQUEST)}
+        try {
+            let object = await this.connection.find({"_id":trueId}).toArray()
+            if (!object[0]){
+                customError(`no existe un registro con id: ${id}`,standardErrors.DB_NOT_FOUND)
+            }
+            return  object[0]
+        } catch (error) {
+            customError(error.message,error.type??standardErrors.DB_NOT_RESPOND)
         }
-        let collection = await this.connectCollection()
-        let object = await collection.find({"_id":trueId}).toArray()
-        if (!object[0]){
-            const error = new Error(`no existe un registro con id: ${id}`)
-            error.type = "db not found"
-            throw error
-        }
-        await this.closeCollection()
-        return  object[0]
+        
     }
 
     // función para obtener todos los productos por Get
     async getAll(){
-        let collection = await this.connectCollection()
-        let objects = await collection.find().toArray()
-        await this.closeCollection()
-        return objects
+        try {
+            let objects = await this.connection.find().toArray()
+            return objects
+        } catch (error) {
+            customError(`Error al recuperar los registros : ${error.message}`,standardErrors.DB_NOT_RESPOND)
+        }
+        
     }
 
     // función para borar un objeto por DELETE/:id
     async deleteById(id){
         let trueId
-        try{trueId = ObjectId(id)}
-        catch{
-            const error = new Error(`Formato de identificador no admitido`)
-            error.type = "db not found"
-            throw error
+        try{trueId = ObjectId(id)}catch{customError(`Formato de identificador no admitido`,standardErrors.BAD_REQUEST)}
+        try{
+            const {deletedCount} = await this.connection.deleteOne({"_id":trueId})
+            if (deletedCount===0){
+                customError(`no existe un registro con id: ${id}`,standardErrors.DB_NOT_FOUND)
+            }
+        }catch(error){
+            customError(error.message,error.type??standardErrors.DB_NOT_RESPOND)
         }
-        const collection =  await this.connectCollection()
-        const {deletedCount} = await collection.deleteOne({"_id":trueId})
-        if (deletedCount===0){
-            const error = new Error(`no existe un registro con id: ${id}`)
-            error.type = "db not found"
-            throw error
-        }
-        await this.closeCollection()
+        
     }
 
     // funcion para modificar un objeto ya creado PUT/:id
     async modById(id,object){
         let trueId
-        try{trueId = ObjectId(id)}
-        catch{
-            const error = new Error(`Formato de identificador no admitido`)
-            error.type = "db not found"
-            throw error
-        }
-        const collection = await this.connectCollection();
-        const {modifiedCount} = await collection.updateOne({"_id":trueId},{$set:{...object}})
+        try{trueId = ObjectId(id)}catch{customError(`Formato de identificador no admitido`,standardErrors.BAD_REQUEST)}
+        const {modifiedCount} = await this.connection.updateOne({"_id":trueId},{$set:{...object}})
         if (modifiedCount===0){
-            const error = new Error(`no existe un registro con id: ${id}`)
-            error.type = "db not found"
-            throw error
+            customError(`no existe un registro con id: ${id}`,standardErrors.DB_NOT_FOUND)
         }
-        await this.closeCollection()
         return object
     }
 
     // función no utilizada por el momento
     async deleteAll(){
-        const collection = await this.connectCollection()
-        await collection.deleteMany({})
-        await this.closeCollection()
+        await this.connection.deleteMany({})
     }
 
     // función para callback manejo del archivo de texto plano
@@ -98,17 +88,7 @@ class mongoContainer {
             const collection = database.collection(this.collection);
             return collection
         } catch (err) {
-            console.log(`Error en acceso a colección ${this.collection} - Error:${err}`)
-        }
-    }
-
-    // función para callback manejo del archivo de texto plano
-    async closeCollection(){
-        try{
-            await this.client.close();
-        }
-        catch(err){
-            console.log(`Error en cierre base de datos: ${err}`)
+            customError(`Error en acceso a colección ${this.collection} - Error:${err}}`,standardErrors.DB_NOT_RESPOND)
         }
     }
 }

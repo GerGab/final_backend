@@ -2,6 +2,7 @@
 import express from "express";
 import { Router } from "express";
 import apiCarts from '../ApiControllers/apiCarts.js'
+import { requiereAuth } from "../Middlewares/authorization.js";
 
 // creacion de instancias
 const routerApiCarts = new Router()
@@ -12,12 +13,8 @@ routerApiCarts.use(express.urlencoded({extended:true}))
 // middlewares propios
 
 // ruteo ApiProducts
-routerApiCarts.post("/",apiCarts.createCart)
-routerApiCarts.post("/:cart_id/productos",apiCarts.addProduct)
-routerApiCarts.get("/:cart_id",apiCarts.getCart)
-routerApiCarts.delete("/reset",apiCarts.reset)
-routerApiCarts.delete("/:cart_id/productos/:product_id",apiCarts.delProduct)
-routerApiCarts.delete("/:cart_id",apiCarts.delCart)
-
+routerApiCarts.post("/",requiereAuth,apiCarts.addProduct)
+routerApiCarts.get("/",requiereAuth,apiCarts.getCart)
+routerApiCarts.delete("/:product_id",requiereAuth,apiCarts.delProduct)
 
 export default routerApiCarts

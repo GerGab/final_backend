@@ -2,7 +2,7 @@ import config from '../config.js'
 import fs from 'fs'
 import admin from "firebase-admin"
 
-let cartDao,productDao;
+let cartDao,productDao,userDao,ordersDao;
 
 switch (config.DATABASE_TYPE) {
     case 'json':
@@ -23,8 +23,10 @@ switch (config.DATABASE_TYPE) {
         break
     case 'mongodb':
         const { default: daoMongo } = await import('./daoMongo.js')
-        productDao = new daoMongo(config.mongodb,"ecommerce","products")
-        cartDao = new daoMongo(config.mongodb,"ecommerce","carts")
+        productDao = new daoMongo("ecommerce","products")
+        cartDao = new daoMongo("ecommerce","carts")
+        userDao = new daoMongo("ecommerce","users")
+        ordersDao = new daoMongo("ecommerce","orders")
         break
     default:
         const { default: daoMemory } = await import('./daoMemory.js')
@@ -33,4 +35,4 @@ switch (config.DATABASE_TYPE) {
         break
 } 
 
-export { productDao, cartDao }
+export { productDao, cartDao, userDao,ordersDao }
