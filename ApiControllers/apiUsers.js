@@ -2,7 +2,7 @@ import { userDao } from '../DAOs/daoIndex.js'
 import { clientMail } from '../MessageSenders/emailSender/index.js'
 import { customError, standardErrors } from '../Models/errors.js'
 import formatNewRegister from '../Models/newRegister.js'
-import { createHash,isValidPassword } from '../models/passwordEncrypt.js'
+import { createHash,isValidPassword } from '../Models/passwordEncrypt.js'
 import validateUser from '../Models/users.js'
 import apiCarts from './apiCarts.js'
 
