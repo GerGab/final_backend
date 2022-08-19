@@ -28,6 +28,7 @@ app.use(passportMiddleware)
 app.use(passportSessionHandler)
 
 //======= ROUTERS =======
+
 app.use("/api/products",routerApiProducts)
 app.use("/api/shoppingcartproducts",routerApiCarts)
 app.use("/api/orders",routerApiOrders)
