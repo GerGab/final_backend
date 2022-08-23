@@ -36,7 +36,7 @@ app.use("/api/orders",routerApiOrders)
 app.post("/login",loginController)
 app.post("/api/users",registerController)
 app.use("/auth",authRouter)
-app.get("/logout",logoutController)
+app.post("/logout",logoutController)
 app.use('/',webRouter)
 app.use(errorHandler)
 
