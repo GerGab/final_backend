@@ -1,0 +1,1 @@
+{"level":"error","message":{"Endpoint":"/register","Method":"POST","code":404,"error":"Error en registro de usuario => Server terminates connection. response=421 Timeout - closing connection: 421 Timeout - closing connection"}}

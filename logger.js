@@ -1,5 +1,5 @@
 import winston from 'winston'
-import 'dotenv/config'
+import config from './config.js'
 
 function buildProdLogger() {
   const prodLogger = winston.createLogger({
@@ -21,7 +21,7 @@ function buildDevLogger() {
 
 let logger = null
 
-if (process.env.NODE_ENV === 'production') {
+if (config.production === 'production') {
   logger = buildProdLogger()
 } else {
   logger = buildDevLogger()

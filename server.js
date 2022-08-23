@@ -42,7 +42,7 @@ app.use(errorHandler)
 const PORT = process.env.PORT || config.PORT;
 
 const mountServer = ()=>{ const server = app.listen(PORT, () =>{
-    logger.info(`Servidor express escuchando en el puerto ${PORT}- PID WORKER - ${process.pid}`)
+    logger.info(`Servidor express escuchando en el puerto ${PORT} - MODE: ${config.production} - PID WORKER - ${process.pid}`)
 })
 
 server.on("error", error => logger.error(`Error en servidor ${error}- PID WORKER - ${process.pid}`))}
