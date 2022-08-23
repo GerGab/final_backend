@@ -1,6 +1,6 @@
 import {Router} from 'express'
 
-import { failLoginController, failRegisterController, logoutController, successController } from '../ApiControllers/authController.js'
+import { failLoginController, failRegisterController, successController } from '../ApiControllers/authController.js'
 
 const authRouter = new Router()
 
@@ -12,7 +12,6 @@ authRouter.all("/failLogin",failLoginController)
 authRouter.all("/successRegister",successController)
 authRouter.all("/failRegister",failRegisterController)
 
-// Logout
-authRouter.get("/logout",logoutController)
+
 
 export default authRouter

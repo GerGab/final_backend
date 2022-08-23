@@ -8,6 +8,7 @@ import config from './config.js'
 import { passportMiddleware, passportSessionHandler } from './Middlewares/passport.js'
 import { sessionHandler as session } from './Middlewares/session.js';
 import { loginController, registerController } from './ApiControllers/authController.js'
+import { logoutController } from './ApiControllers/authController.js'
 import logger from './logger.js'
 import routerApiOrders from './Routers/ordersRouters.js'
 import errorHandler from './Middlewares/errorHandler.js'
@@ -33,8 +34,9 @@ app.use("/api/products",routerApiProducts)
 app.use("/api/shoppingcartproducts",routerApiCarts)
 app.use("/api/orders",routerApiOrders)
 app.post("/login",loginController)
-app.post("/register",registerController)
+app.post("/api/users",registerController)
 app.use("/auth",authRouter)
+app.get("/logout",logoutController)
 app.use('/',webRouter)
 app.use(errorHandler)
 
