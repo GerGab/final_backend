@@ -1,4 +1,5 @@
 import winston from 'winston'
+import 'dotenv/config'
 
 function buildProdLogger() {
   const prodLogger = winston.createLogger({
