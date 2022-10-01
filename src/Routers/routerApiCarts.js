@@ -2,7 +2,7 @@
 import express from "express";
 import { Router } from "express";
 import apiCarts from '../ApiControllers/apiCarts.js'
-import { requiereAuth } from "../MiddleWares/authorization.js";
+import { requiereAuth } from "../Middlewares/authorization.js";
 
 // creacion de instancias
 const routerApiCarts = new Router()
