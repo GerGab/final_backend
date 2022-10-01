@@ -21,7 +21,7 @@ function buildDevLogger() {
 
 let logger = null
 
-if (config.production === 'production') {
+if (config.production === 'PRODUCTION') {
   logger = buildProdLogger()
 } else {
   logger = buildDevLogger()

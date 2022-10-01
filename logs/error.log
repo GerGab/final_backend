@@ -1,1 +1,11 @@
-{"level":"error","message":{"Endpoint":"/register","Method":"POST","code":404,"error":"Error en registro de usuario => Server terminates connection. response=421 Timeout - closing connection: 421 Timeout - closing connection"}}
+{"level":"error","message":{"Endpoint":"/api/users","Method":"POST","code":400,"error":"Error al registrar usuario => Error en registro de usuario => Al inspeccionar en los usuarios => Ya existe un usuario con este email"}}
+{"level":"error","message":{"Endpoint":"/api/products","Method":"POST","code":400,"error":"Error de autenticación => debe adjuntar un token valido"}}
+{"level":"error","message":{"Endpoint":"/api/products","Method":"POST","code":401,"error":"Error de autenticación => Error de extracción jwt => invalid token "}}
+{"level":"error","message":{"Endpoint":"/api/products","Method":"POST","code":401,"error":"Error de autenticación => Error de extracción jwt => invalid token "}}
+{"level":"error","message":{"Endpoint":"/api/products/fe938af1fb12b8df6f51c0ca","Method":"PUT","code":401,"error":"Error de autenticación => Error de extracción jwt => jwt expired "}}
+{"level":"error","message":{"Endpoint":"/api/products/0078e31ea628f9380f747f13","Method":"DELETE","code":404,"error":"Error al eliminar producto por ID => Error al eliminar el producto => no existe un registro con id: 0078e31ea628f9380f747f13"}}
+{"level":"error","message":{"Endpoint":"/api/shoppingcartproducts","Method":"POST","code":401,"error":"Error de autenticación => Error de extracción jwt => jwt expired "}}
+{"level":"error","message":{"Endpoint":"/api/shoppingcartproducts","Method":"POST","code":400,"error":"Error de autenticación => debe adjuntar un token con formato valido"}}
+{"level":"error","message":{"Endpoint":"/api/shoppingcartproducts","Method":"POST","code":404,"error":"Error al agregar producto => Error al agregar un producto al carrito =>no existe un registro con id: 319710ae45375558cbfe8939"}}
+{"level":"error","message":{"Endpoint":"/api/shoppingcartproducts","Method":"POST","code":404,"error":"Error al agregar producto => Error al agregar un producto al carrito =>no existe un registro con id: 319710ae45375558cbfe8939"}}
+{"level":"error","message":{"Endpoint":"/login","Method":"POST","code":400,"error":"Error al logear usuario => no fue posible recuperar el usuario solicitado => no existe el usuario por los parametros enviados."}}

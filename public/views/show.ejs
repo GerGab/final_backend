@@ -1,0 +1,17 @@
+
+<% if(info) { %>
+    <h4>Argumentos:</h4>
+    <% for (key of Object.keys(info.ARGS).slice(1)) {%>
+        <p><%=`${key}:${info.ARGS[key]}`%><p>
+            <%}%>
+    <h4>Sistema: <%=info.OS%></h4>
+    <h4>Node Version : <%=info.NODE%></h4>
+    <h4>Memoria: <%=info.MEM_RES%></h4>
+    <h4>Path: <%=info.EXEC_PATH%></h4>
+    <h4>process: <%=info.PROCESS_ID%></h4>
+    <h4>Folder: <%=info.PROYECT_FOLDER%></h4>
+    <h4>CPUs: <%=info.CPUs%></h4>
+<%}else{%>
+    <h3 class="alert alert-danger">Fallo al obtener informacion</h3>
+    <%}%>
+

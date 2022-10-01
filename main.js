@@ -1,4 +1,4 @@
-import mountServer from "./server.js";
+import {mountServer} from "./server.js";
 import cluster from 'cluster'
 import os from 'os'
 import config from "./config.js";
