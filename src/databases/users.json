@@ -1,1 +1,22 @@
-[]
+[
+  {
+    "_id": "6ec6b2bf49aa7609e412bfa7",
+    "id": "6ec6b2bf49aa7609e412bfa7",
+    "email": "admin@admin.com",
+    "name": "admin",
+    "lastname": "admin",
+    "image": "http:....",
+    "password": "$2a$10$4PQGRYXH/CkMv7m0QgdYTuV/kzTZq2pH6g.VkSC.GTYn.6aiT54Ye",
+    "phone": "+541144441234"
+  },
+  {
+    "_id": "ec6b2bf49aa7609e412bfa7f",
+    "id": "ec6b2bf49aa7609e412bfa7f",
+    "email": "gggdesarrollos@gmail.com",
+    "name": "alyson",
+    "lastname": "fritsch",
+    "image": "http...",
+    "password": "$2a$10$LL2/eIUb3P2M38aE5DW04.hwNOudvk3.LHbLjGzKzUMOSuD/bKQp2",
+    "phone": "+541144441234"
+  }
+]

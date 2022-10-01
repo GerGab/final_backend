@@ -4,7 +4,7 @@ import { extractUser } from "../utils/jwtModule.js";
 
 function requiereAuth(req, res, next) {
     const authHeader = req.headers["authorization"] || req.headers["Authorization"] || '';
-    const token = authHeader?.split(' ')[1]
+    const token = authHeader?.split(' ')[1] || authHeader
     if (!token) {
             customError('Error de autenticación => debe adjuntar un token con formato valido',standardErrors.BAD_REQUEST)
         }
@@ -20,7 +20,7 @@ function requiereAuth(req, res, next) {
 
 function requireAdmin(req,res,next){
     const authHeader = req.headers["authorization"] || req.headers["Authorization"] || '';
-    const token = authHeader
+    const token = authHeader?.split(' ')[1] || authHeader
     if (!token) {
             customError('Error de autenticación => debe adjuntar un token valido',standardErrors.BAD_REQUEST)
         }

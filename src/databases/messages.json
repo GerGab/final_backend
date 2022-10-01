@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "id": "e349432dbd01c1fcd8afa491",
+    "_id": "e349432dbd01c1fcd8afa491",
+    "email": "pepe@gmail.com",
+    "text": "hola!",
+    "date": 1664613861920
+  },
+  {
+    "id": "349432dbd01c1fcd8afa4912",
+    "_id": "349432dbd01c1fcd8afa4912",
+    "email": "pepe@gmail.com",
+    "text": "hola!",
+    "date": 1664613871010
+  }
+]
