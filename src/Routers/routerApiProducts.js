@@ -2,7 +2,7 @@
 import express from "express";
 import { Router } from "express";
 import apiProducts from "../ApiControllers/apiProducts.js";
-import { requireAdmin } from "../MiddleWares/authorization.js";
+import { requireAdmin } from "../Middlewares/authorization.js";
 // creacion de instancias
 const routerApiProducts = new Router()
 

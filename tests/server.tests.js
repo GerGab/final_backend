@@ -1,8 +1,20 @@
 import { expect } from "chai";
 import { describe, it } from "mocha";
-import {nuevoProducto,productoModificado} from './objects.js'
+import {product,modProduct,newProduct,adminUser,newUser} from './objects.js'
 import axiosClient from './axiosClient.js'
 
+describe("Creción de usuarios debe:",()=>{
+
+    it("crear el usuario Admin",async function(){
+        const response = await axiosClient.get('/api/users',adminUser)
+        console.log(response.data)
+        expect(response.status).to.eql(200)
+        expect(response.data).to.be.an('string')
+    });
+
+})
+
+/* 
 describe("Se debe verificar en la api productos que:",()=>{
 
     let modId
@@ -39,4 +51,4 @@ describe("Se debe verificar en la api productos que:",()=>{
     })
 
 
-})   
+})    */

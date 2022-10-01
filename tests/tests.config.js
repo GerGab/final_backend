@@ -9,6 +9,6 @@ const argsObject = args
                     .argv
 
 let URL = `${argsObject.URL}:${argsObject.PORT}`
-if(argsObject.ENV==='PRODUCTION') URL = 'https://entregaheroku.herokuapp.com' 
+if(argsObject.ENV==='PRODUCTION') URL = 'https://gggfinalbackend.herokuapp.com/' 
 
 export default URL
