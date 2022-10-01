@@ -1,5 +1,6 @@
 // importación de modulos y paquetes
 import express from 'express'
+import errorHandler from './src/Middlewares/errorHandler.js'
 import routerApiCarts from './src/Routers/routerApiCarts.js'
 import routerApiProducts from './src/Routers/routerApiProducts.js'
 import webRouter from './src/Routers/webRouter.js'
@@ -10,7 +11,6 @@ import routerApiUsers from './src/Routers/routerApiUsers.js'
 import routerAuth from './src/Routers/routerAuth.js'
 import routerImages from './src/Routers/routerImages.js'
 import messagesController from './src/SocketControllers/messagesController.js'
-import errorHandler from './src/Middlewares/errorHandler.js'
 import infoRouter from './src/Routers/infoRouters.js'
 import http from "http";
 import { Server } from "socket.io";
