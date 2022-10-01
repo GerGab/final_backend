@@ -1,7 +1,7 @@
 // importación de modulos y paquetes
 import express from 'express'
-import routerApiProducts from './src/Routers/routerApiProducts.js'
 import routerApiCarts from './src/Routers/routerApiCarts.js'
+import routerApiProducts from './src/Routers/routerApiProducts.js'
 import webRouter from './src/Routers/webRouter.js'
 import config from './config.js'
 import logger from './logger.js'
