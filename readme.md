@@ -31,7 +31,8 @@ JWT_PRIVATE_KEY= XXXXXXX
 
 
 **_NOTA:_** se adjunta un .model.env con explicación de cada parámetro.
-**_NOTA2:_** en caso de desear configurar una DB firebase se deberá adjuntar el archivo de configuración ".json" correspondiente en la carpeta "./src/databases".
+
+**_NOTA-2:_** en caso de desear configurar una DB firebase se deberá adjuntar el archivo de configuración ".json" correspondiente en la carpeta "./src/databases".
 
 #### Archivo Config.js
 
