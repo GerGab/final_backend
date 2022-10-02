@@ -47,10 +47,11 @@ Son dos los aspectos importantes a tener en cuenta.
 
     2) Configurar el servicio SMTP; opciones verificadas:
 
-        -   gmail: si se utilizará una cuenta gmail.
+        -   gmail: si se utilizase una cuenta gmail.
         -   ethereal: si se utilizase una cuenta ethereal.
 
 #### HEROKU
 
-Para su uso en Heroku las variables de entorno ya estan configuradas y se  utiliza la base mongoAtlas.
-En caso de querer ingresar como administrador se deberá hacer con el usuario admin@admin.com y password 123456. (recordar que este usuario es ficticio y no recibirá notificaciones por email)
+Para su uso en Heroku las variables de entorno ya estan configuradas y se utiliza la persistencia en mongoAtlas.
+En caso de desear ingresar como administrador se deberá hacer creando el usuario gggdesarrollos@gmail.com.
+Los email se encuentran configurados con SMTP gmail, y procederan de una casilla gmail creada para el proyecto.
