@@ -3,7 +3,7 @@ const infoDiv = document.getElementById("info")
 
 
 async function plotInfo(info){
-    const template = await fetch('./views/show.ejs')
+    const template = await fetch('../public/views/show.ejs')
     const text = await template.text()
     const functionTemplate = ejs.render(text, {info})
     infoDiv.innerHTML = functionTemplate
