@@ -22,7 +22,7 @@ const io = new Server(httpServer)
 
 //=== MIDDLEWARES ===
 app.use(express.json())
-app.use(express.static("Public"))
+app.use(express.static("public"))
 
 //======= ROUTERS =======
 app.use("/api/images",routerImages)
