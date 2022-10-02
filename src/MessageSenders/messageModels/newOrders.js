@@ -4,7 +4,7 @@ const formatNewOrder = {
 
     adminEmail : (user,purchaseOrder)=>{
         return  {
-            to: config.nodemailerUser,
+            to: config.adminEmail,
             subject: 'Nueva Orden de Compra',
             message: `<h2>Se ha registrado una nueva compra con id: ${purchaseOrder.id}</h2>
                     <h3>para : ${user.email}</h3>

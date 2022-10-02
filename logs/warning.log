@@ -9,3 +9,9 @@
 {"level":"error","message":{"Endpoint":"/api/shoppingcartproducts","Method":"POST","code":404,"error":"Error al agregar producto => Error al agregar un producto al carrito =>no existe un registro con id: 319710ae45375558cbfe8939"}}
 {"level":"error","message":{"Endpoint":"/api/shoppingcartproducts","Method":"POST","code":404,"error":"Error al agregar producto => Error al agregar un producto al carrito =>no existe un registro con id: 319710ae45375558cbfe8939"}}
 {"level":"error","message":{"Endpoint":"/login","Method":"POST","code":400,"error":"Error al logear usuario => no fue posible recuperar el usuario solicitado => no existe el usuario por los parametros enviados."}}
+{"level":"error","message":{"Endpoint":"/api/users","Method":"POST","code":400,"error":"Error al registrar usuario => Error en registro de usuario => Al inspeccionar en los usuarios => Ya existe un usuario con este email"}}
+{"level":"error","message":{"Endpoint":"/login","Method":"POST","code":400,"error":"Error al logear usuario => no fue posible recuperar el usuario solicitado => no existe el usuario por los parametros enviados."}}
+{"level":"error","message":{"Endpoint":"/api/products","Method":"POST","code":401,"error":"Error de autenticación => No posee los permisos suficientes para esta acción"}}
+{"level":"error","message":{"Endpoint":"/api/products","Method":"POST","code":400,"error":"Error de autenticación => debe adjuntar un token valido"}}
+{"level":"error","message":{"Endpoint":"/api/shoppingcartproducts","Method":"POST","code":404,"error":"Error al agregar producto => Error al agregar un producto al carrito =>no existe un registro con id: 3a82d8cb94134a4f183c98c1"}}
+{"level":"error","message":{"Endpoint":"/api/orders","Method":"POST","code":400,"error":"Fallo al generar nueva orden => Error al crear la orden de compra=> La lista de productos esta vacia"}}

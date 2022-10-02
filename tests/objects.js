@@ -20,17 +20,16 @@ export const newProduct = {
 }
 
 export const adminUser = {
-    email : 'admin@admin.com',
+    email : 'gggdesarrollos@gmail.com',
     password: "1234",
     name: "admin",
     lastname: "admin",
     phone: "+541144441234",
     image:"http:...."
-    
 }
 
 export const newUser = {
-    email : 'gggdesarrollos@gmail.com',
+    email : 'tests.backend.2022@gmail.com',
     password: "1234",
     name: "alyson",
     lastname: "fritsch",

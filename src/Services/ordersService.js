@@ -17,7 +17,7 @@ export default class ordersService {
             const order = new OrdersModel(cart).print()
             await this.#ordersDao.create(order)
             await clientMail.send(formatNewOrder.adminEmail(user,order))
-            //await clientMail.send(formatNewOrder.clientEmail(user,order))
+            await clientMail.send(formatNewOrder.clientEmail(user,order))
         } catch (error) {
             customError(`Error al crear la orden de compra=> ${error.message}`,error.type??standardErrors.INTERNAL_ERROR)
         }
