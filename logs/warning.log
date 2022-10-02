@@ -17,3 +17,4 @@
 {"level":"error","message":{"Endpoint":"/api/orders","Method":"POST","code":400,"error":"Fallo al generar nueva orden => Error al crear la orden de compra=> La lista de productos esta vacia"}}
 {"level":"error","message":{"Endpoint":"/favicon.ico","Method":"GET","code":400,"error":"Ruta no implementada"}}
 {"level":"error","message":{"Endpoint":"/images/Favicon.jpeg","Method":"GET","code":400,"error":"Ruta no implementada"}}
+{"level":"error","message":{"Endpoint":"/favicon.ico","Method":"GET","code":400,"error":"Ruta no implementada"}}
