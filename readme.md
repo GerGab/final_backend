@@ -50,8 +50,26 @@ Son dos los aspectos importantes a tener en cuenta.
         -   gmail: si se utilizase una cuenta gmail.
         -   ethereal: si se utilizase una cuenta ethereal.
 
+#### Subiendo imagenes.
+
+Para subir exitosamente las imagenes al servidor el nombre del campo en el formulario debe ser "imageFile"
+
 #### HEROKU
 
 Para su uso en Heroku las variables de entorno ya estan configuradas y se utiliza la persistencia en mongoAtlas.
 En caso de desear ingresar como administrador se deberá hacer creando el usuario gggdesarrollos@gmail.com.
 Los email se encuentran configurados con SMTP gmail, y procederan de una casilla gmail creada para el proyecto.
+
+#### TESTS
+
+Los tests creados para este proyecto pueden ejecutarse para ambos entornos del servidor.
+
+Ejecución local en modo development:
+
+    -   npm run test
+
+En el modo development es posible además seleccionar la URL (--URL=XXX) y puerto (--PORT=XXX) deseados. Por defecto URL=127.0.0.1 y PORT=8080
+
+Ejecución en servidor modo producción:
+
+    -   npm run test -- --ENV=PRODUCTION
