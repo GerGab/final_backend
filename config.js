@@ -30,7 +30,7 @@ export default {
     firebase: {
         json: './src/databases/ecommerce-8cc03-firebase-adminsdk-nfaqb-2ef68b3318.json'
     },
-    DATABASE_TYPE: 'mongodb',
+    DATABASE_TYPE: 'mongod',
     PORT: argsObject.PORT,
     MODE: argsObject.MODE,
     production : argsObject.DEPLOY,
