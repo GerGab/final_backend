@@ -18,7 +18,7 @@ infoRouter.use("/data",(req,res)=>{
     res.status(200).json(info)
 })
 infoRouter.use("/",(req,res)=>{
-    res.sendFile("home.html",{root:'./Public/views'})
+    res.sendFile("home.html",{root:'./public/views'})
 })
 
 
